@@ -40,6 +40,7 @@ class BookmarksController extends require('./Controller') {
                     }
 
                     //Vérifie si c'est une recherche par Nom.
+                    console.log(args);
                     if("name" in args){
                         if(args.name.endsWith('*')) //Vérifie si la recherche est incomplète.
                             content.push(this.bookmarksRepository.searchIncomplete("Name", args.name.substr(0, args.name.length -1)));
@@ -55,6 +56,8 @@ class BookmarksController extends require('./Controller') {
                     //Vérifie qu'il a utilisé une fonction existante
                     if(content.length <= 0)
                         this.response.notImplemented();
+                    else if(content.length == 1)
+                        this.response.JSON(content[0]);
                     else
                         this.response.JSON(content);
                 }

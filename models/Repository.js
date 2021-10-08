@@ -88,9 +88,12 @@ class Repository {
     search(key, arg){
         let array = [];
         this.objectsList.forEach(element => {
+            console.log(element);
+            console.log(arg);
             if(element[key] == arg)
                 array.push(element);
         });
+        
         return array;
     }
     searchIncomplete(key, arg){
